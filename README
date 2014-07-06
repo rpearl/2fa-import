@@ -1,0 +1,17 @@
+This script generates QR codes for every 2FA code in a Google
+Authenticator Database.
+
+It works for me; your mileage may vary.
+
+Requires https://pypi.python.org/pypi/qrcode
+
+To export your QR codes as a sqlite3 database, you need root on your
+old phone. This lets you import your codes without root on your new
+phone. If you have root, you might as well just copy the database over;
+this script will be a very roundabout way of doing it.
+
+To grab your codes from your rooted old phone, use:
+    adb pull /data/data/com.google.android.apps.authenticator2/databases/databases
+
+Then to generate QR codes, use:
+    python 2fa-import.py [path-to-pulled-database]
